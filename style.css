@@ -1,0 +1,581 @@
+/* =========================================================
+   KALKULATOR BMI - STYLESHEET
+   Clean Modern Health & Wellness Theme
+   ========================================================= */
+
+:root {
+  /* Color System */
+  --bg-app: #f0fdf4;
+  --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 50%, #f5f3ff 100%);
+  --card-bg: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  /* Theme Accents (Emerald / Teal) */
+  --primary: #0d9488;
+  --primary-hover: #0f766e;
+  --primary-glow: rgba(13, 148, 136, 0.25);
+
+  /* Status Colors */
+  --color-underweight: #0284c7;  /* Sky Blue */
+  --color-normal: #10b981;       /* Emerald Green */
+  --color-overweight: #f59e0b;   /* Amber / Orange */
+  --color-obese: #ef4444;        /* Crimson Red */
+
+  /* Borders & Shadows */
+  --border-subtle: #e2e8f0;
+  --shadow-card: 0 20px 40px -10px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-button: 0 10px 20px -5px rgba(13, 148, 136, 0.35);
+
+  /* Typography */
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Outfit', var(--font-main);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 1rem;
+  line-height: 1.6;
+}
+
+/* App Wrapper & Card */
+.app-wrapper {
+  width: 100%;
+  max-width: 480px;
+}
+
+.calculator-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: var(--shadow-card);
+  padding: 2.2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.calculator-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--color-underweight), var(--color-normal), var(--color-overweight), var(--color-obese));
+}
+
+/* Card Header */
+.card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #ccfbf1 0%, #d1fae5 100%);
+  color: var(--primary);
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  box-shadow: 0 8px 16px rgba(13, 148, 136, 0.12);
+}
+
+.header-title {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 0.35rem;
+}
+
+.header-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* BMI Form */
+.bmi-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.unit-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: #f0fdfa;
+  border: 1px solid #ccfbf1;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-full);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1.1rem;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  pointer-events: none;
+  transition: var(--transition);
+}
+
+.input-wrapper input {
+  width: 100%;
+  background: #f8fafc;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem 0.9rem 2.85rem;
+  font-size: 1.05rem;
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition);
+}
+
+.input-wrapper input:focus {
+  background: #ffffff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-glow);
+}
+
+.input-wrapper:focus-within .input-icon {
+  color: var(--primary);
+}
+
+.form-group.has-error input {
+  border-color: var(--color-obese);
+  background-color: #fef2f2;
+}
+
+.error-text {
+  font-size: 0.78rem;
+  color: var(--color-obese);
+  display: none;
+}
+
+.form-group.has-error .error-text {
+  display: block;
+}
+
+/* Button 'Hitung BMI' */
+.btn-calculate {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary) 0%, #059669 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  box-shadow: var(--shadow-button);
+  transition: var(--transition);
+}
+
+.btn-calculate:hover {
+  background: linear-gradient(135deg, var(--primary-hover) 0%, #047857 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 25px -5px rgba(13, 148, 136, 0.45);
+}
+
+.btn-calculate:active {
+  transform: translateY(0);
+}
+
+/* Results Section */
+.result-section {
+  display: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  margin-top: 2rem;
+}
+
+.result-section.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.result-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.result-divider::before,
+.result-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px dashed var(--border-subtle);
+}
+
+.result-divider span {
+  padding: 0 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.result-card {
+  background: #f8fafc;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  text-align: center;
+}
+
+.result-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.bmi-score-display {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-bottom: 0.8rem;
+}
+
+.score-number {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+  transition: color var(--transition);
+}
+
+.score-unit {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Category Badge */
+.category-wrapper {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.category-prefix {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.category-badge {
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  transition: var(--transition);
+}
+
+/* Badge Categories Coloring */
+.category-badge.cat-underweight {
+  background: #e0f2fe;
+  color: var(--color-underweight);
+  border: 1px solid #bae6fd;
+}
+
+.category-badge.cat-normal {
+  background: #d1fae5;
+  color: var(--color-normal);
+  border: 1px solid #a7f3d0;
+}
+
+.category-badge.cat-overweight {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.category-badge.cat-obese {
+  background: #fee2e2;
+  color: var(--color-obese);
+  border: 1px solid #fecaca;
+}
+
+/* Scale Gauge Bar */
+.scale-container {
+  margin: 1.5rem 0 1.8rem;
+}
+
+.scale-bar {
+  display: flex;
+  height: 12px;
+  border-radius: var(--radius-full);
+  overflow: visible;
+  position: relative;
+  background: #e2e8f0;
+}
+
+.scale-segment {
+  height: 100%;
+}
+
+.seg-under {
+  width: 25%;
+  background: var(--color-underweight);
+  border-radius: var(--radius-full) 0 0 var(--radius-full);
+}
+
+.seg-normal {
+  width: 30%;
+  background: var(--color-normal);
+}
+
+.seg-over {
+  width: 20%;
+  background: var(--color-overweight);
+}
+
+.seg-obese {
+  width: 25%;
+  background: var(--color-obese);
+  border-radius: 0 var(--radius-full) var(--radius-full) 0;
+}
+
+.scale-pointer {
+  position: absolute;
+  top: -7px;
+  width: 14px;
+  height: 26px;
+  background: #0f172a;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  transform: translateX(-50%);
+  transition: left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.scale-pointer::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 4px 4px 0 4px;
+  border-style: solid;
+  border-color: #0f172a transparent transparent transparent;
+}
+
+.scale-legend-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 0.6rem;
+  padding: 0 4px;
+}
+
+/* Details Box */
+.details-box {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.1rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.25rem;
+}
+
+.detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.detail-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.detail-label i {
+  color: var(--primary);
+}
+
+.detail-val {
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
+.tip-text {
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.btn-reset {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+
+.btn-reset:hover {
+  color: var(--text-primary);
+  background: #e2e8f0;
+}
+
+/* Standard Reference Grid */
+.reference-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.ref-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 0.9rem;
+  text-align: center;
+}
+
+.ref-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.ref-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: #f8fafc;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid #f1f5f9;
+}
+
+.ref-item .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ref-item.blue .dot { background: var(--color-underweight); }
+.ref-item.green .dot { background: var(--color-normal); }
+.ref-item.orange .dot { background: var(--color-overweight); }
+.ref-item.red .dot { background: var(--color-obese); }
+
+.ref-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.ref-info strong {
+  font-size: 0.78rem;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.ref-info span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Responsiveness */
+@media (max-width: 480px) {
+  .calculator-card {
+    padding: 1.6rem 1.25rem;
+  }
+
+  .header-title {
+    font-size: 1.6rem;
+  }
+
+  .score-number {
+    font-size: 2.8rem;
+  }
+
+  .ref-grid {
+    grid-template-columns: 1fr;
+  }
+}
